@@ -14,6 +14,46 @@ Nexus is a high-performance Java JNI bridge for the [Eidolon programming languag
 ## Requirements
 - Java 8 or higher
 - Rust 1.70 with Cargo (for building native library)
+## Installation
+### Gradle:
+```groovy
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.Weever1337:nExus-bridge:${Tag}'
+}
+```
+
+### Gradle Kotlin DSL:
+```
+repositories {
+    mavenCentral()
+    maven { url = uri("https://jitpack.io") }
+}
+
+dependencies {
+    implementation("com.github.Weever1337:nExus-bridge:${Tag}")
+}
+```
+
+### Maven:
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
+<dependency>
+    <groupId>com.github.Weever1337</groupId>
+    <artifactId>nExus-bridge</artifactId>
+    <version>Tag</version>
+</dependency>
+```
 
 # Using example
 
