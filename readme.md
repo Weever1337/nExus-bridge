@@ -64,16 +64,18 @@ import io.nexus.eidolon.NexusException;
 public class Example {
     public static void main(String[] args) {
         try (NexusEngine nexus = new NexusEngine()) {
-            nexus.setLogCallback((level, msg) -> System.out.println("[" + level + "] " + msg));
-            nexus.setGlobalVariable("player_x", 100);
-            nexus.setGlobalVariable("player_y", 50);
+            nexus.setLogCallback((level, message) -> System.out.println("[LOG-" + level + "]: " + message));
+            
+            Map<String, Object> globals = new HashMap<>();
+            globals.put("player_x", 100);
+            globals.put("player_y", 50);
 
             String code = """
                 fun distance[x1, y1, x2, y2] = ((x2 - x1)^2 + (y2 - y1)^2)^0.5
                 distance[$player_x, $player_y, 200, 150]
                 """;
 
-            Object result = nexus.eval(code);
+            Object result = nexus.evaluate(code, globals);
             System.out.println("Distance: " + result);
         } catch (NexusException e) {
             e.printStackTrace();
